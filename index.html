@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Download Memory Assist</title>
+</head>
+<body>
+<script>
+if (/android/i.test(navigator.userAgent)) {
+  window.location.href = "https://play.google.com/store/apps/details?id=com.rohanapps.myapp";
+} 
+else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+  window.location.href = "https://apps.apple.com/us/app/memory-assist/id6755656026";
+} 
+else {
+  document.body.innerHTML = "<h2>Please open this link on your phone to download Memory Assist.</h2>";
+}
+</script>
+</body>
+</html>
