@@ -5,15 +5,19 @@
 </head>
 <body>
 <script>
-if (/android/i.test(navigator.userAgent)) {
-  window.location.href = "https://play.google.com/store/apps/details?id=com.rohanapps.myapp";
-} 
-else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-  window.location.href = "https://apps.apple.com/us/app/memory-assist/id6755656026";
-} 
-else {
-  document.body.innerHTML = "<h2>Please open this link on your phone to download Memory Assist.</h2>";
-}
+  const ua = navigator.userAgent;
+
+  if (/android/i.test(ua)) {
+    window.location.href = "https://play.google.com/store/apps/details?id=com.rohanapps.myapp";
+  } else if (/iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
+    window.location.href = "https://apps.apple.com/us/app/memory-assist/id6755656026";
+  } else {
+    document.body.innerHTML = `
+      <h2>Download Memory Assist</h2>
+      <p><a href="https://apps.apple.com/us/app/memory-assist/id6755656026">Download on the App Store</a></p>
+      <p><a href="https://play.google.com/store/apps/details?id=com.rohanapps.myapp">Get it on Google Play</a></p>
+    `;
+  }
 </script>
 </body>
 </html>
