@@ -1,23 +1,222 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Download Memory Assist</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+```
+:root {
+  --bg: #0d110e;
+  --card: #121a13;
+  --border: rgba(255,255,255,0.07);
+  --accent: #5aab6a;
+  --accent2: #7ec98a;
+  --text: #f0f5f1;
+  --muted: #7b8e7e;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(90,171,106,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.container {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  max-width: 420px;
+  width: 100%;
+  animation: fadeUp 0.7s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.icon-wrap {
+  width: 90px;
+  height: 90px;
+  border-radius: 22px;
+  overflow: hidden;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 0 40px rgba(90,171,106,0.35);
+}
+
+.icon-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.tagline {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.store-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--text);
+  margin-bottom: 0.85rem;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.store-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(90,171,106,0.08), transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.store-btn:hover {
+  border-color: rgba(90,171,106,0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.store-btn:hover::before { opacity: 1; }
+
+.store-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: #1a221b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.store-icon svg { width: 24px; height: 24px; }
+
+.store-text { text-align: left; }
+.store-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.store-name { font-size: 1rem; font-weight: 600; margin-top: 1px; }
+
+.arrow {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 1.1rem;
+  transition: transform 0.2s, color 0.2s;
+}
+.store-btn:hover .arrow { transform: translateX(3px); color: var(--accent2); }
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.25rem 0 0.85rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.footer {
+  margin-top: 2rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+```
+
+  </style>
 </head>
 <body>
 <script>
   const ua = navigator.userAgent;
-
   if (/android/i.test(ua)) {
     window.location.href = "https://play.google.com/store/apps/details?id=com.rohanapps.myapp";
   } else if (/iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
     window.location.href = "https://apps.apple.com/us/app/memory-assist/id6755656026";
-  } else {
-    document.body.innerHTML = `
-      <h2>Download Memory Assist</h2>
-      <p><a href="https://apps.apple.com/us/app/memory-assist/id6755656026">Download on the App Store</a></p>
-      <p><a href="https://play.google.com/store/apps/details?id=com.rohanapps.myapp">Get it on Google Play</a></p>
-    `;
   }
 </script>
+
+<div class="container">
+  <div class="icon-wrap">
+    <img src="icon.jpeg" alt="Memory Assist icon" />
+  </div>
+
+  <h1>Memory Assist</h1>
+  <p class="tagline">Get the app on your phone or tablet<br>to get started.</p>
+
+  <a class="store-btn" href="https://apps.apple.com/us/app/memory-assist/id6755656026" target="_blank">
+    <div class="store-icon">
+      <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+      </svg>
+    </div>
+    <div class="store-text">
+      <div class="store-label">Download on the</div>
+      <div class="store-name">App Store</div>
+    </div>
+    <span class="arrow">→</span>
+  </a>
+
+  <div class="divider">or</div>
+
+  <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.rohanapps.myapp" target="_blank">
+    <div class="store-icon">
+      <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 20.5v-17c0-.83.94-1.3 1.6-.8l14 8.5c.6.36.6 1.24 0 1.6l-14 8.5c-.66.5-1.6.03-1.6-.8z"/>
+      </svg>
+    </div>
+    <div class="store-text">
+      <div class="store-label">Get it on</div>
+      <div class="store-name">Google Play</div>
+    </div>
+    <span class="arrow">→</span>
+  </a>
+
+  <p class="footer">Scan the QR code on your mobile device for the best experience.</p>
+</div>
 </body>
 </html>
